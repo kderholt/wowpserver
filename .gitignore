@@ -1,0 +1,16 @@
+docker-compose-tbc.yml
+docker-compose-classic.yml
+mangosd/files/mangosd.conf
+mangosd/files-tbc/mangosd.conf
+maongsd/files/dbc
+maongsd/files/maps
+maongsd/files/vmaps
+maongsd/files/mmaps
+maongsd/files/Cameras
+maongsd/files-tbc/dbc
+maongsd/files-tbc/maps
+maongsd/files-tbc/vmaps
+maongsd/files-tbc/mmaps
+maongsd/files-tbc/Cameras
+realmd/files/realmd.conf
+realmd/files-tbc/realmd.conf
