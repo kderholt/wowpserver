@@ -1,0 +1,12 @@
+#!/bin/bash
+docker volume create wowdbnax
+docker network create dbinit
+docker run -ti -d --rm --name mariadb --network dbinit -e "MYSQL_ROOT_PASSWORD=miwowpoc" -v "wowdbnax:/var/lib/mysql" mariadb:10.1
+docker run -ti -d --rm --name wowbaseinit --network dbinit wowbase:poc /bin/bash
+sleep 15
+docker cp files/dbinit.sh wowbaseinit:/tmp
+docker cp files/InstallFullDB.config wowbaseinit:/srv/wow/classic-db
+docker cp files/db_create_mysql.sql wowbaseinit:/srv/wow/mangos-classic/sql/create
+docker exec -ti wowbaseinit sh -c "chmod +x /tmp/dbinit.sh && /tmp/dbinit.sh"
+docker stop mariadb wowbaseinit
+docker network rm dbinit

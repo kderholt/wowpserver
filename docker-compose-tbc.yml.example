@@ -1,0 +1,70 @@
+version: "3.1"
+
+services:
+  worldserver:
+    image: wowbase-tbc:fix
+    restart: on-failure
+    ports:
+      - 8085:8085
+    networks:
+      - wowserver-tbc
+    command: /srv/wowconfig/docker-endpoint.sh
+    depends_on:
+        - mariadb
+    stdin_open: true
+    tty: true
+    volumes:
+      - "./mangosd/files-tbc:/srv/wowconfig"
+      - "./mangosd/files-tbc/maps:/srv/wow/mangos-tbc/run/maps"
+      - "./mangosd/files-tbc/mmaps:/srv/wow/mangos-tbc/run/mmaps"
+      - "./mangosd/files-tbc/vmaps:/srv/wow/mangos-tbc/run/vmaps"
+      - "./mangosd/files-tbc/dbc:/srv/wow/mangos-tbc/run/dbc"
+  authserver:
+    image: wowbase-tbc:fix
+    restart: on-failure
+    ports:
+      - 3724:3724
+    networks:
+      - wowserver-tbc
+    depends_on:
+        - mariadb
+    command: /srv/wowconfig/docker-endpoint.sh
+    volumes:
+      - "./realmd/files-tbc:/srv/wowconfig"
+
+  mariadb:
+    image: mariadb:10.1
+    restart: on-failure
+    environment:
+      - MYSQL_ROOT_PASSWORD=miwowpoc
+      - MYSQL_PASSWORD=healthcheck
+      - MYSQL_USER=healthcheck
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "mysqladmin",
+          "ping",
+          "-h",
+          "127.0.0.1",
+          "-u",
+          healthcheck,
+          "-p",
+          healthcheck,
+        ]
+      interval: 1m30s
+      timeout: 30s
+      retries: 10
+    networks:
+      - wowserver-tbc
+    volumes:
+      - "wowdb-tbc:/var/lib/mysql"
+
+networks:
+  wowserver-tbc:
+    driver: bridge
+
+volumes:
+  wowdb-tbc:
+    external:
+     name: wowdb-tbc
