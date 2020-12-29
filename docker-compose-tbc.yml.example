@@ -35,8 +35,11 @@ services:
   mariadb:
     image: mariadb:10.1
     restart: on-failure
+    command: [
+            '--wait_timeout=28800'
+    ]
     environment:
-      - MYSQL_ROOT_PASSWORD=miwowpoc
+      - MYSQL_ROOT_PASSWORD=MySQLPASS
       - MYSQL_PASSWORD=healthcheck
       - MYSQL_USER=healthcheck
     healthcheck:
@@ -58,13 +61,13 @@ services:
     networks:
       - wowserver-tbc
     volumes:
-      - "wowdb-tbc:/var/lib/mysql"
+      - "wowdb-tbc-remake:/var/lib/mysql"
 
 networks:
   wowserver-tbc:
     driver: bridge
 
 volumes:
-  wowdb-tbc:
+  wowdb-tbc-remake:
     external:
-     name: wowdb-tbc
+     name: wowdb-tbc-remake

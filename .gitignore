@@ -16,3 +16,4 @@ realmd/files/realmd.conf
 realmd/files-tbc/realmd.conf
 mariadb/files/InstallFullDB-EDITED.config
 mariadb/files/db_create_mysql-EDITED.sql
+mariadb/files/post_update-EDITED.sql

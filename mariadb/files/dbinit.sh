@@ -6,6 +6,8 @@ for sql_file in $(ls sql/base/dbc/original_data/*.sql); do mysql -uroot -p${2} -
 for sql_file in $(ls sql/base/dbc/cmangos_fixes/*.sql); do mysql -uroot -p${2} -hmariadb --database=$3 < $sql_file ; done
 mysql -uroot -p${2} -hmariadb $4 < sql/base/characters.sql
 mysql -uroot -p${2} -hmariadb $5 < sql/base/realmd.sql
+mysql -uroot -p${2} -hmariadb $5 < /tmp/post_update.sql
+
 cd /srv/wow/$6
 ./InstallFullDB.sh
 

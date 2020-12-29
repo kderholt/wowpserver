@@ -853,7 +853,7 @@ Event.Announce = 0
 BeepAtStart = 1
 ShowProgressBars = 0
 WaitAtStartupError = 0
-Motd = "Welcome to bobs world"
+Motd = "BIS server"
 PlayerCommands = 1
 
 ###################################################################################################################
