@@ -3,6 +3,7 @@ docker-compose-classic.yml
 mangosd/files/mangosd.conf
 mangosd/files-tbc/mangosd.conf
 maongsd/files/dbc/**
+mangosd/files/dbc/KJETILTEST
 maongsd/files/maps/
 maongsd/files/vmaps/
 maongsd/files/mmaps/
