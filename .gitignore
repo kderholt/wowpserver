@@ -2,7 +2,7 @@ docker-compose-tbc.yml
 docker-compose-classic.yml
 mangosd/files/mangosd.conf
 mangosd/files-tbc/mangosd.conf
-maongsd/files/dbc/
+maongsd/files/dbc/**
 maongsd/files/maps/
 maongsd/files/vmaps/
 maongsd/files/mmaps/
