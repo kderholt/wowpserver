@@ -14,3 +14,5 @@ mangosd/files-tbc/mmaps/
 mangosd/files-tbc/Cameras/
 realmd/files/realmd.conf
 realmd/files-tbc/realmd.conf
+mariadb/files/InstallFullDB-EDITED.config
+mariadb/files/db_create_mysql-EDITED.sql
