@@ -1,4 +1,4 @@
-# wowpserver
+# cMANGoS docker stack - World of Warcraft
 
 
 
