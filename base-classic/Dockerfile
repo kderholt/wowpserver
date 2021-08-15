@@ -1,5 +1,6 @@
-from ubuntu:xenial
+from ubuntu:focal
 
+ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get upgrade -y --no-install-recommends && apt-get install -y --no-install-recommends \
 build-essential \
 gcc \

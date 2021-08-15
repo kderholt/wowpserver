@@ -2,35 +2,35 @@ version: "3.1"
 
 services:
   worldserver:
-    image: tbc-base:latest
+    image: wotlk-base:latest
     restart: on-failure
     ports:
       - 8085:8085
     networks:
-      - wowserver-tbc
+      - wowserver-wotlk
     command: /srv/wowconfig/docker-endpoint.sh
     depends_on:
         - mariadb
     stdin_open: true
     tty: true
     volumes:
-      - "./mangosd/files-tbc:/srv/wowconfig"
-      - "./mangosd/files-tbc/maps:/srv/wow/mangos-tbc/run/maps"
-      - "./mangosd/files-tbc/mmaps:/srv/wow/mangos-tbc/run/mmaps"
-      - "./mangosd/files-tbc/vmaps:/srv/wow/mangos-tbc/run/vmaps"
-      - "./mangosd/files-tbc/dbc:/srv/wow/mangos-tbc/run/dbc"
+      - "./mangosd/files-wotlk:/srv/wowconfig"
+      - "./mangosd/files-wotlk/maps:/srv/wow/mangos-wotlk/run/maps"
+      - "./mangosd/files-wotlk/mmaps:/srv/wow/mangos-wotlk/run/mmaps"
+      - "./mangosd/files-wotlk/vmaps:/srv/wow/mangos-wotlk/run/vmaps"
+      - "./mangosd/files-wotlk/dbc:/srv/wow/mangos-wotlk/run/dbc"
   authserver:
-    image: tbc-base:latest
+    image: wotlk-base:latest
     restart: on-failure
     ports:
       - 3724:3724
     networks:
-      - wowserver-tbc
+      - wowserver-wotlk
     depends_on:
         - mariadb
     command: /srv/wowconfig/docker-endpoint.sh
     volumes:
-      - "./realmd/files-tbc:/srv/wowconfig"
+      - "./realmd/files-wotlk:/srv/wowconfig"
 
   mariadb:
     image: mariadb:10.1
@@ -59,15 +59,15 @@ services:
       timeout: 30s
       retries: 10
     networks:
-      - wowserver-tbc
+      - wowserver-wotlk
     volumes:
-      - "wowdb-tbc:/var/lib/mysql"
+      - "wowdb-wotlk:/var/lib/mysql"
 
 networks:
-  wowserver-tbc:
+  wowserver-wotlk:
     driver: bridge
 
 volumes:
-  wowdb-tbc:
+  wowdb-wotlk:
     external:
-     name: wowdb-tbc
+     name: wowdb-wotlk

@@ -25,10 +25,9 @@ libboost-all-dev
 
 
 RUN mkdir -p /srv/wow
-RUN cd /srv/wow && git clone git://github.com/cmangos/mangos-tbc.git && git clone git://github.com/cmangos/tbc-db.git
-RUN mkdir -p /srv/wow/mangos-tbc/build 
-#RUN cp -ar /files/SpellEffects.cpp /srv/wow/mangos-tbc/src/game/Spells/SpellEffects.cpp
-RUN cd /srv/wow/mangos-tbc/build && \
+RUN cd /srv/wow && git clone git://github.com/cmangos/mangos-wotlk.git && git clone git://github.com/cmangos/wotlk-db.git
+RUN mkdir -p /srv/wow/mangos-wotlk/build 
+RUN cd /srv/wow/mangos-wotlk/build && \
 cmake .. -DCMAKE_INSTALL_PREFIX=\../run -DBUILD_EXTRACTORS=ON -DPCH=1 -DDEBUG=0 -DBUILD_PLAYERBOT=ON && \
 make && \
 make install

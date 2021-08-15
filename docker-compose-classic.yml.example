@@ -2,7 +2,7 @@ version: "3.1"
 
 services:
   worldserver:
-    image: wowbase:poc
+    image: classic-base:latest
     restart: on-failure
     ports:
       - 8085:8085
@@ -14,13 +14,13 @@ services:
     stdin_open: true
     tty: true
     volumes:
-      - "./mangosd/files:/srv/wowconfig"
-      - "./mangosd/files/maps:/srv/wow/mangos-classic/run/maps"
-      - "./mangosd/files/mmaps:/srv/wow/mangos-classic/run/mmaps"
-      - "./mangosd/files/vmaps:/srv/wow/mangos-classic/run/vmaps"
-      - "./mangosd/files/dbc:/srv/wow/mangos-classic/run/dbc"
+      - "./mangosd/files-classic:/srv/wowconfig"
+      - "./mangosd/files-classic/maps:/srv/wow/mangos-classic/run/maps"
+      - "./mangosd/files-classic/mmaps:/srv/wow/mangos-classic/run/mmaps"
+      - "./mangosd/files-classic/vmaps:/srv/wow/mangos-classic/run/vmaps"
+      - "./mangosd/files-classic/dbc:/srv/wow/mangos-classic/run/dbc"
   authserver:
-    image: wowbase:poc
+    image: classic-base:latest
     restart: on-failure
     ports:
       - 3724:3724
@@ -30,7 +30,7 @@ services:
         - mariadb
     command: /srv/wowconfig/docker-endpoint.sh
     volumes:
-      - "./realmd/files:/srv/wowconfig"
+      - "./realmd/files-classic:/srv/wowconfig"
 
   mariadb:
     image: mariadb:10.1
