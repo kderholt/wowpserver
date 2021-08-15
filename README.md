@@ -2,21 +2,22 @@
 
 
 
-#prerequisits
+**#prerequisits**
 1. world of warcraft client
 2. docker
 
 
-#install
+**#install**
 create the wowclient folder in the root:
 wow-client-classic 	- vanilla client
 wow-client-tbc		- tbc client
 
 then run:
+```
 ./installWoW.sh 
-
+```
 The usage is displayed here:
-
+```
 usage: ./installWoW.sh <expansion> <desire>
 expansion: [classic|tbc]
 desire: [fullclean|clean|install]
@@ -24,11 +25,11 @@ desire: [fullclean|clean|install]
 clean - remove database, mangos setup
 fullclean - remove database, mangos setup and baseimage
 install - compile baseimage (will skip if exist), create a new database (will abort install if db exist), compile maps (skip if exists)
+```
 
 
 
-
-#underthehood
+**#underthehood**
 
 The setup is based of 3 docker containers.
 worldserver, authserver and the database server.
@@ -45,7 +46,7 @@ The database is created within a docker volume. This means you can do docker-com
 
 If we dont see the maps/vmaps/mmaps/dbc folders in the mangos structure, we will try to extract the mapfiles. - this is also a timeconsuming operation.
 
-#settings
+**#settings**
 default in all expansions the character you create will be max level.
 
 you can only run one expansion at the same time. We could make it run on different ports but not sure if wowclient support this. either way, get multiple IP and your good.
