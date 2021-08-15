@@ -2,7 +2,7 @@
 
 
 
-#prerequisits
+**#prerequisits**
 1. world of warcraft client
 2. docker
 
