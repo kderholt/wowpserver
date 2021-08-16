@@ -8,10 +8,11 @@
 
 
 **#install**
-```
 create the wowclient folder in the root:
-wow-client-classic 	- vanilla client
-wow-client-tbc		- tbc client
+```
+wow-client-classic 	- vanilla client folder
+wow-client-tbc		  - tbc client folder
+wow-client-wotlk    - wotlk client folder
 ```
 then run:
 ```
