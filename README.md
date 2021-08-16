@@ -8,10 +8,11 @@
 
 
 **#install**
+```
 create the wowclient folder in the root:
 wow-client-classic 	- vanilla client
 wow-client-tbc		- tbc client
-
+```
 then run:
 ```
 ./installWoW.sh 
